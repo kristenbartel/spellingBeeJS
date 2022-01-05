@@ -2,12 +2,12 @@
 //get the div items in the game
 let gameBoard = document.getElementById('gameboard');
 let loadingBee = document.getElementById('loadingBee');
-let game = document.getElementById('game');
+let gameDiv = document.getElementById('game');
 let wordDiv = document.getElementById('word');
-let letters - document.getElementById('letters');
+let lettersDiv = document.getElementById('letters');
 
 // get the div items in the wordsBank
-let wordsBankDiv = document.querySelector('#wordsBanks'); //this will query the entire doc and find whatever you want. But must use the selector .class #id
+let wordsBankDiv = document.querySelector('#wordsBank'); //this will query the entire doc and find whatever you want. But must use the selector .class #id
 let foundTitle = document.querySelector('#foundTitle');
 let wordsDiv = document.querySelector('#words');
 
@@ -44,16 +44,32 @@ let f_button = document.createElement('button');
 
 let addButton = document.createElement('div');
     addButton.classList.add('button', 'is-black');
+    addButton.innerText = 'add';
 
 //write the function to add the buttons to your HTML on page load
 //** NOTE: setTimeout is just to slow the load so you can see it. but you could use it to add a CSS loaders and other neat stuff!! :)
 
 //using EventListener "DOMContentLoaded", load the add buttons
-
-
+document.addEventListener('DOMContentLoaded', () => {
+     setTimeout(() => {
+        gameDiv.appendChild(addButton);
+     }, 3500)
+});
 //using an IIFE, load the letter button
-//Why did I put the letters in the IFFE??  HINT: LOOK AT THE CONSOLE LOG AND SEE WHEN IT FIRES.
-
+//Why did I put the letters in the IFFE??  HINT: LOOK AT THE CONSOLE LOG AND SEE WHEN IT FIRES. IFFE = immideiately invoked function expression
+(() => {
+ setTimeout(() =>{
+     loadingBee.classList.toggle('hide'); //hides and loads?
+    wordDiv.classList.toggle('hide');
+    wordsBankDiv.classList.toggle('hide');
+    lettersDiv.appendChild(a_button);
+    lettersDiv.appendChild(b_button);
+    lettersDiv.appendChild(c_button);
+    lettersDiv.appendChild(d_button);
+    lettersDiv.appendChild(e_button);
+    lettersDiv.appendChild(f_button);
+ }, 3000)
+})() //this last set of parenthesis is "calling" the funct
 
 //Step-3 write the listeners to take a letter and add to your word div
 
