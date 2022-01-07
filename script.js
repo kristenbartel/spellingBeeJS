@@ -90,7 +90,7 @@ b_button.addEventListener('click', (e) => {
 
 c_button.addEventListener('click', (e) => {
     e.preventDefault();
-    clickedLetter = a_button.value;
+    clickedLetter = c_button.value;
     wordDiv.innerHTML += clickedLetter;
     console.log('clickedLetter', 'button clicked');
 })
@@ -117,6 +117,30 @@ f_button.addEventListener('click', (e) => {
 })
 
 //add a function to take your word from the word div and add it to an Array to then add to your Words Bank
+
+let wordsBankArray = [];
+let wordCount = 0;
+foundTitle.innerHTML = `you have found ${wordCount} words!`;
+wordsBankDiv.appendChild(foundTitle);
+
+addButton.addEventListener('click', (e)=> {
+    e.preventDefault();
+    wordsBankArray.push(wordDiv.innerHTML);
+    console.log('wordsBankDiv', wordsBankArray); //having this in quotes will return only a single item?
+
+    let newWordDiv = document.createElement('div');
+    newWordDiv.setAttribute('id', `${wordCount}`); //set the id as the word count for the div
+
+    newWordDiv.classList.add('is-size-2');
+    //pulling out of array and putting it in newWordArray
+    newWordDiv.innerHTML = wordsBankArray[wordCount]; //this used wordCount to grab the index locations of our array-- makes this dynamic
+    wordsBankDiv.appendChild(newWordDiv);
+    wordCount++;
+    foundTitle.innerHTML = `you have found ${wordCount} words`;
+    wordDiv.innerHTML = '';
+})
+
+
 
 
 
